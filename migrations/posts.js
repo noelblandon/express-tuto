@@ -1,0 +1,9 @@
+CREATE TABLE Post (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    createdAt TIMESTAMP NOT NULL DEFAULT now(),
+    content TEXT,
+    published BOOLEAN NOT NULL DEFAULT false,
+    authorId INTEGER NOT NULL,
+    FOREIGN KEY (authorId) REFERENCES User(id)
+  );
