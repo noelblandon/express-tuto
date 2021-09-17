@@ -4,28 +4,38 @@ const { sequelize }  = require("../../config/db");
 class User extends Model {}
 
 User.init({   
-    id_user:{
+    userId:{
         type:DataTypes.INTEGER.UNSIGNED,
+        field: 'user_id',
         primaryKey: true,
         autoIncrement: true
     },
-    name:{
+    userName:{
         type:DataTypes.STRING,
-        allowNull:false
+        field: 'username',
+        allowNull:false,
+        require:true
     },
-    email:{
+    userEmail:{
         type:DataTypes.STRING,
+        field:'email',
         allowNull:false,
         unique: true
+    },
+    userPass:{
+        type:DataTypes.STRING,
+        field:'password',
+        allowNull:false,
+        require:true
     }
 },{
     sequelize,
-    modelName:'User',
+    modelName: 'user',
+    tableName: 'users',
     timestamps: true,
     createdAt: true,
     updatedAt: true,
-    freezeTableName: true,
-    tableName: 'users'
+    freezeTableName: true
 });
 
 
